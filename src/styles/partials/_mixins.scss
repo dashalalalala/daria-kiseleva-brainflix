@@ -1,4 +1,4 @@
-@use "./variables" as *;
+@import "./variables";
 
 @mixin tablet {
 	@media (min-width: 768px) and (max-width: $breakpoint-tablet) {
@@ -10,4 +10,35 @@
 	@media (min-width: $breakpoint-desktop) {
 		@content;
 	}
+}
+
+//Font Mixins (Desktop & Tablet)
+@mixin page-header {
+	font-size: 2.0625rem;
+	line-height: 2.75rem;
+	font-weight: 700;
+}
+
+@mixin section-header {
+	font-size: 0.75rem;
+	line-height: 1.25rem;
+	font-weight: 700;
+}
+
+@mixin subheader {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-weight: 700;
+}
+
+@mixin body-copy {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-weight: 400;
+}
+
+@mixin labels-buttons {
+	font-size: 0.75rem;
+	line-height: 1.25rem;
+	font-weight: 700;
 }

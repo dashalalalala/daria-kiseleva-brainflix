@@ -1,17 +1,17 @@
 /*Fonts*/
 @font-face {
 	font-family: "Avenir Regular";
-	src: url("/daria-kiseleva-brainflix/src/assets/fonts/AvenirNextLTPro-Regular.otf")
+	src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf")
 			format(opentype),
-		url("/daria-kiseleva-brainflix/src/assets/fonts/alternative-files/AvenirNextLTPro.ttf")
+		url("../../assets/fonts/alternative-files/AvenirNextLTPro.ttf")
 			format(truetype);
 }
 
 @font-face {
 	font-family: "Avenir Bold";
-	src: url("/daria-kiseleva-brainflix/src/assets/fonts/AvenirNextLTPro-Bold.otf")
+	src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf")
 			format(opentype),
-		url("/daria-kiseleva-brainflix/src/assets/fonts/alternative-files/AvenirNextLTProBold.ttf")
+		url("../../assets/fonts/alternative-files/AvenirNextLTProBold.ttf")
 			format(truetype);
 }
 

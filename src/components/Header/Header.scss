@@ -1,0 +1,63 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/_mixins";
+
+.header {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	padding: 1rem;
+}
+
+.logo {
+	max-width: 7rem;
+	max-height: 1.5625rem;
+}
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 0;
+	position: relative;
+
+	&__search {
+		width: -webkit-fill-available;
+		font-family: "Avenir Regular";
+		border: 1px solid $brainflix-mercury;
+		border-radius: 4px;
+		background-color: $brainflix-alabaster;
+		color: $brainflix-black;
+		padding-left: 2rem;
+		margin-right: 1rem;
+
+		&--icon {
+			position: absolute;
+			left: 0.625rem;
+			bottom: 1.5rem;
+		}
+	}
+
+	&__avatar {
+		border-radius: 50%;
+		width: 2.25rem;
+		height: 2.25rem;
+		object-fit: cover;
+	}
+}
+
+.button {
+	background-color: $brainflix-blue;
+	border: none;
+	width: -webkit-fill-available;
+	color: $white;
+	min-width: 9.375rem;
+	min-height: 2.5rem;
+	border-radius: 4px;
+	font-family: "Avenir Bold";
+	position: relative;
+
+	&__icon {
+		position: absolute;
+		left: 0.625rem;
+		bottom: 0.5rem;
+	}
+}
