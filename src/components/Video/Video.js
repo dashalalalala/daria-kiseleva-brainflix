@@ -1,10 +1,10 @@
-import "./Video.scss"
+import "./Video.scss";
 
 function Video(props) {
-  return (
+	return (
 		<div className="video">
 			<div>
-				<video className="video__poster" poster={props.image}></video>
+				<video className="video__thumbnail" poster={props.image}></video>
 			</div>
 			<div className="video__details">
 				<h3 className="video__title">{props.title}</h3>

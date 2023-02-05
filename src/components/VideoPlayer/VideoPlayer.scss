@@ -1,0 +1,66 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/_mixins";
+
+.main {
+	margin: 0 1rem;
+}
+
+.player {
+	display: flex;
+	border-bottom: 1px solid $brainflix-mercury;
+	flex-direction: column;
+
+	&__poster {
+		width: -webkit-fill-available;
+		object-fit: cover;
+	}
+
+	&__title {
+		@include mobile-header;
+		font-family: "Avenir Bold";
+		text-align: left;
+	}
+}
+
+.details {
+	&__channel {
+		font-family: "Avenir Bold";
+		text-align: left;
+	}
+
+	&__date {
+		text-align: left;
+		color: $silver;
+	}
+}
+
+.info {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	gap: 2rem;
+	border-bottom: 1px solid $brainflix-mercury;
+}
+
+.stats {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	&__views,
+	&__likes {
+		margin-bottom: 0;
+		color: $silver;
+	}
+
+	&__icon {
+		padding: 0 1rem;
+	}
+}
+
+.description {
+	&__text {
+		@include mobile-copy;
+		text-align: left;
+	}
+}

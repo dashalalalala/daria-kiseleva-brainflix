@@ -5,10 +5,13 @@
 	display: flex;
 	flex-direction: column;
 	padding: 0 1rem;
-  gap: 1rem;
-  align-items: flex-start;
+	gap: 0.5rem;
+	align-items: flex-start;
 
-&__header {
-    @include section-header;
-  }
+	&__header {
+		@include section-header;
+		color: $silver;
+		font-family: "Avenir Bold";
+		margin-bottom: 0;
+	}
 }
