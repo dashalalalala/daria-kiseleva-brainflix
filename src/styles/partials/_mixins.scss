@@ -42,3 +42,28 @@
 	line-height: 1.25rem;
 	font-weight: 700;
 }
+
+//Font Mixins (Mobile) 
+@mixin mobile-header {
+	font-size: 1.5rem;
+	line-height: 2rem;
+	font-weight: 700;
+}
+
+@mixin mobile-subheader {
+	font-size: 0.8125rem;
+	line-height: 1.125rem;
+	font-weight: 700;
+}
+
+@mixin mobile-copy {
+	font-size: 0.8125rem;
+	line-height: 1.125rem;
+	font-weight: 400;
+}
+
+@mixin mobile-button {
+	font-size: 0.625rem;
+	line-height: 1.25rem;
+	font-weight: 700;
+}

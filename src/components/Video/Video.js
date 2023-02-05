@@ -1,9 +1,15 @@
-import "./Video.scss";
+import "./Video.scss"
 
-function Video() {
+function Video(props) {
   return (
-		<div>
-			<h1 className="title">BMX Rampage: 2021 Highlights</h1>
+		<div className="video">
+			<div>
+				<video className="video__poster" poster={props.image}></video>
+			</div>
+			<div className="video__details">
+				<h3 className="video__title">{props.title}</h3>
+				<p className="video__channel">{props.channel}</p>
+			</div>
 		</div>
 	);
 }

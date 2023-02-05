@@ -1,0 +1,14 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/_mixins";
+
+.video-list {
+	display: flex;
+	flex-direction: column;
+	padding: 0 1rem;
+  gap: 1rem;
+  align-items: flex-start;
+
+&__header {
+    @include section-header;
+  }
+}
