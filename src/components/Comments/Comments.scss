@@ -1,0 +1,47 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/_mixins";
+
+.comments {
+	display: flex;
+	margin: 1rem;
+	border-bottom: 1px solid $brainflix-mercury;
+
+	&__avatar {
+		padding: 0 1rem 0 0;
+
+		&--placeholder {
+			background-color: $brainflix-mercury;
+			border-radius: 50%;
+			width: 2.25rem;
+			height: 2.25rem;
+			object-fit: cover;
+		}
+	}
+
+	.comment {
+		width: -webkit-fill-available;
+
+		&__info {
+			display: flex;
+			justify-content: space-between;
+
+			&--name {
+				@include mobile-copy;
+				font-family: "Avenir Demi";
+				margin: 0;
+			}
+
+			&--date {
+				@include mobile-copy;
+				color: $silver;
+				margin: 0;
+			}
+		}
+
+		&__text {
+			&--comment {
+				@include mobile-copy;
+			}
+		}
+	}
+}

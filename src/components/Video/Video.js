@@ -1,8 +1,11 @@
 import "./Video.scss";
 
 function Video(props) {
+	const clickHandler = () => {
+		props.mainVideoProp(props.id);
+	};
 	return (
-		<div className="video">
+		<div className="video" id={props.id} onClick={clickHandler}>
 			<div>
 				<video className="video__thumbnail" poster={props.image}></video>
 			</div>

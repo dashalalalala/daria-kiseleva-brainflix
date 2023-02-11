@@ -3,6 +3,11 @@
 
 .main {
 	margin: 0 1rem;
+
+	@include tablet {
+		width: calc(100% - 4.5rem);
+		margin: auto;
+	}
 }
 
 .player {
@@ -10,25 +15,55 @@
 	border-bottom: 1px solid $brainflix-mercury;
 	flex-direction: column;
 
+	@include tablet {
+		border-bottom: none;
+	}
+
 	&__poster {
 		width: -webkit-fill-available;
 		object-fit: cover;
+
+		@include tablet {
+			object-fit: contain;
+			background-color: $brainflix-darkblack;
+			max-width: 100%;
+			aspect-ratio: 16/9;
+		}
 	}
 
 	&__title {
 		@include mobile-header;
-		font-family: "Avenir Bold";
+		font-family: "Avenir Demi";
 		text-align: left;
+
+		@include tablet {
+			@include page-header;
+			font-family: "Avenir Bold";
+			margin-bottom: 0.5rem;
+		}
 	}
 }
 
 .details {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	@include tablet {
+		flex-direction: row;
+		gap: 1rem;
+	}
+
 	&__channel {
-		font-family: "Avenir Bold";
+		@include mobile-copy;
+		margin-bottom: 0;
+		font-family: "Avenir Demi";
 		text-align: left;
 	}
 
 	&__date {
+		@include mobile-copy;
+		margin-bottom: 0;
 		text-align: left;
 		color: $silver;
 	}
@@ -40,6 +75,10 @@
 	justify-content: flex-start;
 	gap: 2rem;
 	border-bottom: 1px solid $brainflix-mercury;
+
+	@include tablet {
+		justify-content: space-between;
+	}
 }
 
 .stats {
@@ -47,14 +86,21 @@
 	flex-direction: column;
 	align-items: flex-start;
 
+	@include tablet {
+		flex-direction: row;
+		justify-content: space-around;
+		gap: 1rem;
+	}
+
 	&__views,
 	&__likes {
+		@include mobile-copy;
 		margin-bottom: 0;
 		color: $silver;
 	}
 
 	&__icon {
-		padding: 0 1rem;
+		padding: 0.5rem 0.5rem 0 0.5rem;
 	}
 }
 

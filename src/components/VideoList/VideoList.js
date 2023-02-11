@@ -8,10 +8,13 @@ function VideoList(props) {
 			{props.videos.map((video) => (
 				<Video
 					key={video.id}
+					id={video.id}
 					title={video.title}
 					image={video.image}
 					video={video.video}
 					channel={video.channel}
+					comments={video.comments}
+					mainVideoProp={props.mainVideoProp}
 				/>
 			))}
 		</div>

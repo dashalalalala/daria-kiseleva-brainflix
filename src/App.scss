@@ -2,7 +2,9 @@
 @import "./styles/partials/mixins";
 
 .App {
-  text-align: center;
   font-family: "Avenir Regular";
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 

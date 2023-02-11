@@ -9,30 +9,31 @@ function VideoPlayer(props) {
 			<div className="player">
 				<video
 					className="player__poster"
-					poster={props.videos[1].image}
+					poster={props.videos.image}
+					controls
 				></video>
-				<h2 className="player__title">{props.videos[1].title}</h2>
+				<h2 className="player__title">{props.videos.title}</h2>
 			</div>
 			<div className="info">
 				<div className="details">
-					<p className="details__channel">By {props.videos[1].channel}</p>
+					<p className="details__channel">By {props.videos.channel}</p>
 					<p className="details__date">
-						<Moment format="MM/DD/YYYY">{props.videos[1].timestamp}</Moment>
+						<Moment format="MM/DD/YYYY">{props.videos.timestamp}</Moment>
 					</p>
 				</div>
 				<div className="stats">
 					<p className="stats__views">
-						<img className="stats__icon" src={viewsIcon}></img>
-						{props.videos[1].views}
+						<img className="stats__icon" src={viewsIcon} alt="views icon"></img>
+						{props.videos.views}
 					</p>
 					<p className="stats__likes">
-						<img className="stats__icon" src={likesIcon}></img>
-						{props.videos[1].likes}
+						<img className="stats__icon" src={likesIcon} alt="like icon"></img>
+						{props.videos.likes}
 					</p>
 				</div>
 			</div>
 			<div className="descritpion">
-				<p className="description__text">{props.videos[1].description}</p>
+				<p className="description__text">{props.videos.description}</p>
 			</div>
 		</div>
 	);
