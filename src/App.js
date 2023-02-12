@@ -7,6 +7,7 @@ import CommentsList from "./components/CommentsList/CommentsList";
 import videoDetails from "./data/video-details.json";
 import videos from "./data/videos.json";
 import { useState } from "react";
+import VideoDescription from "./components/VideoDescription/VideoDescription";
 
 function App() {
 	const [mainVideo, setMainVideo] = useState(videoDetails[0]);
@@ -22,7 +23,6 @@ function App() {
 
 	const showFilteredVideos = (id) => {
 		const newVideoArray = videos.filter((video) => video.id !== id);
-		console.log(newVideoArray);
 		setFilter(newVideoArray);
 	};
 
@@ -30,9 +30,18 @@ function App() {
 		<div className="App">
 			<Header />
 			<VideoPlayer videos={mainVideo} />
-			<CommentForm />
-			<CommentsList comments={comments} />
-			<VideoList videos={filteredVideos} mainVideoProp={changeActiveVideo} />
+			<div className="main-div">
+				<div className="video-player">
+					<VideoDescription videos={mainVideo} />
+					<CommentForm comments={comments} />
+					<CommentsList comments={comments} />
+				</div>
+				<VideoList
+					videos={filteredVideos}
+					mainVideoProp={changeActiveVideo}
+					activeVideoId={mainVideo.id}
+				/>
+			</div>
 		</div>
 	);
 }

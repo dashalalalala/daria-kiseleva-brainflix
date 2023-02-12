@@ -1,23 +1,65 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/_mixins";
 
-.comment-count {
-  @include mobile-copy;
-  font-family: "Avenir Demi";
-	padding: 0 1rem;
-  margin-bottom: 0;
+.comment-form {
+	margin: 0 1rem;
 
+	@include tablet {
+		width: calc(100% - 5.5rem);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: auto;
+	}
+
+	@include desktop {
+		margin: 2rem 1rem;
+	}
+
+	&__comments-count {
+		@include mobile-copy;
+		font-family: "Avenir Bold";
+		margin-bottom: 0;
+
+		@include tablet {
+			@include body-copy;
+		}
+
+		@include desktop {
+			@include body-copy;
+		}
+	}
 }
-
 .form {
 	display: flex;
-	margin: 0 1rem;
-  padding: 1rem 0;
+	padding: 1rem 0;
 	border-bottom: 1px solid #e1e1e1;
-  width: -webkit-fill-available;
+	width: -webkit-fill-available;
+
+	&__section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-left: 1rem;
+		width: -webkit-fill-available;
+	}
+
+	&__input {
+		width: -webkit-fill-available;
+
+		@include tablet {
+			display: flex;
+			gap: 1rem;
+		}
+
+		@include desktop {
+			display: flex;
+			gap: 1rem;
+		}
+	}
 
 	&__title {
-		@include mobile-subheader;
+		@include section-header;
 		font-family: "Avenir Demi";
 		color: $silver;
 		margin: 0;
@@ -29,30 +71,45 @@
 		height: 2.25rem;
 		object-fit: cover;
 		margin-top: 1.5rem;
+
+		@include tablet {
+			margin-top: 2.5rem;
+		}
+
+		@include desktop {
+			margin: 2.5rem 1rem 0 0;
+		}
 	}
 
-	&__section {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		margin: 0 1rem;
-		width: -webkit-fill-available;
-	}
-
-	&__input {
+	&__input-field {
 		@include mobile-copy;
 		font-family: "Avenir Regular";
-		height: 3rem;
+		height: 4rem;
 		border: 1px solid $brainflix-mercury;
 		background-color: $brainflix-alabaster;
-		padding: 1rem;
+		padding: 0.5rem 1rem 1rem 0.5rem;
 		border-radius: 4px;
 		overflow-wrap: break-word;
 		resize: none;
+		width: -webkit-fill-available;
 
-		::placeholder {
-			color: $brainflix-darkblack;
+		@include tablet {
+			height: 1rem;
+			margin-top: 0.5rem;
+			line-height: normal;
+			padding: 0.7rem;
 		}
+
+		@include desktop {
+			height: 1rem;
+			margin-top: 0.5rem;
+			line-height: normal;
+			padding: 0.7rem;
+		}
+	}
+
+	& ::placeholder {
+		color: $brainflix-darkblack;
 	}
 
 	&__button {
@@ -61,15 +118,21 @@
 		border: none;
 		color: $white;
 		min-width: 9.375rem;
-		min-height: 2.5rem;
+		height: 2.5rem;
 		border-radius: 4px;
 		font-family: "Avenir Demi";
 		position: relative;
+		width: -webkit-fill-available;
+
+		@include tablet {
+			width: 9.375rem;
+		}
 
 		&--icon {
 			position: absolute;
 			left: 0.625rem;
 			bottom: 0.5rem;
+			width: 1.2rem;
 		}
 	}
 }

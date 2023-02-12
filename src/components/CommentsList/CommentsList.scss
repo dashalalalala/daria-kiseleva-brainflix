@@ -1,0 +1,9 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/_mixins";
+
+.comments-list {
+	@include tablet {
+		width: calc(100% - 5.5rem);
+		margin: auto;
+	}
+}

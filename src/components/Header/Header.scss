@@ -1,26 +1,49 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/_mixins";
 
+a {
+	width: auto;
+	height: auto;
+}
+
 .header {
 	display: flex;
 	flex-direction: column;
 	margin: auto;
 	padding: 1rem;
 
-	&__logo {
-		display: flex;
-		justify-content: center;
-	}
-
 	@include tablet {
 		flex-direction: row;
 		justify-content: space-between;
-		align-items: baseline;
+		align-items: center;
 		width: calc(100% - 4.5rem);
 		margin: auto;
-		padding: 2rem 0;
+		padding: 0;
 	}
-		
+
+	@include desktop {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		width: calc(100% - 15.5rem);
+		margin: auto;
+		padding: 0;
+	}
+
+	&__logo {
+		display: flex;
+		justify-content: center;
+
+		@include tablet {
+			justify-content: flex-start;
+			width: 70%;
+		}
+
+		@include desktop {
+			justify-content: flex-start;
+			width: 200%;
+		}
+	}
 }
 
 .logo {
@@ -28,16 +51,19 @@
 	max-height: 1.5625rem;
 }
 
-a {
-	width: auto;
-	height: auto;
-}
-
 .nav {
 	display: flex;
 	justify-content: space-between;
 	padding: 1rem 0;
 	position: relative;
+
+	@include tablet {
+		width: -webkit-fill-available;
+	}
+
+	@include desktop {
+		width: -webkit-fill-available;
+	}
 
 	&__search {
 		width: -webkit-fill-available;
@@ -52,7 +78,8 @@ a {
 		&--icon {
 			position: absolute;
 			left: 0.625rem;
-			bottom: 1.5rem;
+			bottom: 1.6rem;
+			width: 1rem;
 		}
 	}
 
@@ -61,6 +88,28 @@ a {
 		width: 2.25rem;
 		height: 2.25rem;
 		object-fit: cover;
+
+		@include tablet {
+			visibility: hidden;
+			width: 0;
+		}
+
+		@include desktop {
+			visibility: hidden;
+			width: 1rem;
+		}
+	}
+}
+
+.header__button {
+	@include tablet {
+		display: flex;
+		gap: 1rem;
+	}
+
+	@include desktop {
+		display: flex;
+		gap: 2rem;
 	}
 }
 
@@ -78,6 +127,27 @@ a {
 	&__icon {
 		position: absolute;
 		left: 0.625rem;
-		bottom: 0.5rem;
+		bottom: 0.6rem;
+		width: 1.2rem;
+	}
+
+	&__avatar {
+		display: none;
+
+		@include tablet {
+			display: flex;
+			border-radius: 50%;
+			width: 2.25rem;
+			height: 2.25rem;
+			object-fit: cover;
+		}
+
+		@include desktop {
+			display: flex;
+			border-radius: 50%;
+			width: 2.25rem;
+			height: 2.25rem;
+			object-fit: cover;
+		}
 	}
 }

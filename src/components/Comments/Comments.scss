@@ -6,8 +6,26 @@
 	margin: 1rem;
 	border-bottom: 1px solid $brainflix-mercury;
 
+	@include tablet {
+		margin: 1rem 0;
+	}
+
+	@include desktop {
+		margin: 0 1rem 2rem 1rem;
+	}
+
+	&:last-child {
+		@include desktop {
+			border-bottom: none;
+		}
+	}
+
 	&__avatar {
 		padding: 0 1rem 0 0;
+
+		@include desktop {
+			padding: 0 2rem 0 0;
+		}
 
 		&--placeholder {
 			background-color: $brainflix-mercury;
@@ -41,6 +59,11 @@
 		&__text {
 			&--comment {
 				@include mobile-copy;
+				margin: 0.5rem 0 0.8125rem 0;
+
+				@include tablet {
+					@include body-copy;
+				}
 			}
 		}
 	}

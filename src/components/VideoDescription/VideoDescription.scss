@@ -1,41 +1,33 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/_mixins";
 
-.player {
+.main {
+	margin: 0 1rem;
 	display: flex;
-	justify-content: center;
-	border-bottom: 1px solid $brainflix-mercury;
-	background-color: $brainflix-darkblack;
+	flex-direction: column;
 
 	@include tablet {
+		width: calc(100% - 5.5rem);
 		margin: auto;
-		align-items: center;
 	}
+}
+
+.title {
+	display: flex;
+	border-bottom: 1px solid $brainflix-mercury;
+	flex-direction: column;
 
 	@include tablet {
 		border-bottom: none;
 	}
 
-	&__poster {
-		width: -webkit-fill-available;
-		object-fit: contain;
-		aspect-ratio: 16/9;
-
-		@include tablet {
-			object-fit: contain;
-			width: calc(100% - 5.5rem);
-			aspect-ratio: 16/9;
-		}
-
-		@include desktop {
-			object-fit: contain;
-			max-width: 70%;
-			aspect-ratio: 16/9;
-		}
+	@include desktop {
+		border-bottom: none;
 	}
 
-	&__title {
+	&__text {
 		@include mobile-header;
+		color: $brainflix-black;
 		font-family: "Avenir Demi";
 		text-align: left;
 
@@ -43,6 +35,12 @@
 			@include page-header;
 			font-family: "Avenir Bold";
 			margin-bottom: 0.5rem;
+		}
+
+		@include desktop {
+			@include page-header;
+			font-family: "Avenir Bold";
+			margin-bottom: 0;
 		}
 	}
 }
@@ -57,11 +55,20 @@
 		gap: 1rem;
 	}
 
+	@include desktop {
+		flex-direction: row;
+		gap: 1rem;
+	}
+
 	&__channel {
 		@include mobile-copy;
 		margin-bottom: 0;
 		font-family: "Avenir Demi";
 		text-align: left;
+
+		@include tablet {
+			@include body-copy;
+		}
 	}
 
 	&__date {
@@ -69,6 +76,10 @@
 		margin-bottom: 0;
 		text-align: left;
 		color: $silver;
+
+		@include tablet {
+			@include body-copy;
+		}
 	}
 }
 
@@ -76,11 +87,15 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	gap: 2rem;
+	gap: 4rem;
 	border-bottom: 1px solid $brainflix-mercury;
 	padding: 0 0 1rem 0;
 
 	@include tablet {
+		justify-content: space-between;
+	}
+
+	@include desktop {
 		justify-content: space-between;
 	}
 }
@@ -96,15 +111,26 @@
 		gap: 1rem;
 	}
 
+	@include desktop {
+		flex-direction: row;
+		justify-content: space-around;
+		gap: 1rem;
+	}
+
 	&__views,
 	&__likes {
 		@include mobile-copy;
+		display: flex;
 		margin-bottom: 0;
 		color: $silver;
+
+		@include tablet {
+			@include body-copy;
+		}
 	}
 
 	&__icon {
-		padding: 0.5rem 0.5rem 0 0.5rem;
+		padding: 0 0.5rem;
 	}
 }
 
@@ -112,5 +138,10 @@
 	&__text {
 		@include mobile-copy;
 		text-align: left;
+		margin-bottom: 0;
+
+		@include tablet {
+			@include body-copy;
+		}
 	}
 }

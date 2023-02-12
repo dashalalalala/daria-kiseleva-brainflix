@@ -9,22 +9,32 @@ function Header() {
 		<>
 			<header className="header">
 				<div className="header__logo">
-					<a href="http://localhost:3000/">
+					<a href="/home">
 						{" "}
-						<img className="logo" src={logo} />
+						<img className="logo" src={logo} alt="branflix logo" />
 					</a>
 				</div>
 				<div className="nav">
 					<div>
-						<img className="nav__search--icon" src={searchIcon}></img>
+						<img
+							className="nav__search--icon"
+							src={searchIcon}
+							alt="search icon"
+						></img>
 					</div>
 					<input className="nav__search" placeholder="Search" />
 					<img className="nav__avatar" src={avatar} alt="male profile" />
 				</div>
 				<div className="header__button">
 					<button className="button">
-						UPLOAD<img className="button__icon" src={uploadIcon}></img>
+						UPLOAD
+						<img
+							className="button__icon"
+							src={uploadIcon}
+							alt="upload icon"
+						></img>
 					</button>
+					<img className="button__avatar" src={avatar} alt="male profile" />
 				</div>
 			</header>
 		</>
