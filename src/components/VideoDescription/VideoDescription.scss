@@ -10,6 +10,10 @@
 		width: calc(100% - 5.5rem);
 		margin: auto;
 	}
+
+	@include desktop {
+		margin: auto;
+	}
 }
 
 .title {
@@ -69,6 +73,10 @@
 		@include tablet {
 			@include body-copy;
 		}
+
+		@include desktop {
+			@include body-copy;
+		}
 	}
 
 	&__date {
@@ -78,6 +86,10 @@
 		color: $silver;
 
 		@include tablet {
+			@include body-copy;
+		}
+
+		@include desktop {
 			@include body-copy;
 		}
 	}
@@ -97,6 +109,7 @@
 
 	@include desktop {
 		justify-content: space-between;
+		padding-right: 1rem;
 	}
 }
 
@@ -127,6 +140,10 @@
 		@include tablet {
 			@include body-copy;
 		}
+
+		@include desktop {
+			@include body-copy;
+		}
 	}
 
 	&__icon {
@@ -142,6 +159,11 @@
 
 		@include tablet {
 			@include body-copy;
+		}
+
+		@include desktop {
+			@include body-copy;
+			padding-right: 1rem;
 		}
 	}
 }

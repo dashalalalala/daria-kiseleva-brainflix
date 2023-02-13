@@ -75,19 +75,23 @@ a {
 		padding-left: 2rem;
 		margin-right: 1rem;
 
+		&:focus {
+			outline: 1px solid $brainflix-blue;
+		}
+
 		&--icon {
-			position: absolute;
-			left: 0.625rem;
+			@include icon-position;
 			bottom: 1.6rem;
 			width: 1rem;
+		}
+
+		&::placeholder {
+			color: $brainflix-darkblack;
 		}
 	}
 
 	&__avatar {
-		border-radius: 50%;
-		width: 2.25rem;
-		height: 2.25rem;
-		object-fit: cover;
+		@include avatar;
 
 		@include tablet {
 			visibility: hidden;
@@ -114,40 +118,37 @@ a {
 }
 
 .button {
-	background-color: $brainflix-blue;
-	border: none;
-	width: -webkit-fill-available;
-	color: $white;
-	min-width: 9.375rem;
-	min-height: 2.5rem;
-	border-radius: 4px;
-	font-family: "Avenir Demi";
-	position: relative;
+	@include mobile-button;
+	@include button;
+
+	@include tablet {
+		@include labels-buttons;
+	}
+
+	@include desktop {
+		@include labels-buttons;
+	}
+
+	&:hover {
+		background-color: $brainflix-darkblue;
+		cursor: pointer;
+	}
 
 	&__icon {
-		position: absolute;
-		left: 0.625rem;
-		bottom: 0.6rem;
+		@include icon-position;
 		width: 1.2rem;
 	}
 
 	&__avatar {
+		@include avatar;
 		display: none;
 
 		@include tablet {
 			display: flex;
-			border-radius: 50%;
-			width: 2.25rem;
-			height: 2.25rem;
-			object-fit: cover;
 		}
 
 		@include desktop {
 			display: flex;
-			border-radius: 50%;
-			width: 2.25rem;
-			height: 2.25rem;
-			object-fit: cover;
 		}
 	}
 }

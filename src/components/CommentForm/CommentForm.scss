@@ -3,6 +3,7 @@
 
 .comment-form {
 	margin: 0 1rem;
+	border-bottom: 1px solid #e1e1e1;
 
 	@include tablet {
 		width: calc(100% - 5.5rem);
@@ -13,12 +14,14 @@
 	}
 
 	@include desktop {
-		margin: 2rem 1rem;
+		padding: 2rem 1rem 0.5rem 0;
+		margin: 0;
 	}
 
 	&__comments-count {
 		@include mobile-copy;
 		font-family: "Avenir Bold";
+		color: $brainflix-black;
 		margin-bottom: 0;
 
 		@include tablet {
@@ -33,13 +36,15 @@
 .form {
 	display: flex;
 	padding: 1rem 0;
-	border-bottom: 1px solid #e1e1e1;
 	width: -webkit-fill-available;
+
+	@include tablet {
+		padding: 1rem 0 1.5rem 0;
+	}
 
 	&__section {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
 		margin-left: 1rem;
 		width: -webkit-fill-available;
 	}
@@ -56,6 +61,39 @@
 			display: flex;
 			gap: 1rem;
 		}
+
+		&--field {
+			@include mobile-copy;
+			font-family: "Avenir Regular";
+			height: 4rem;
+			border: 1px solid $brainflix-mercury;
+			background-color: $brainflix-alabaster;
+			padding: 0.5rem 1rem 1rem 0.5rem;
+			border-radius: 4px;
+			overflow-wrap: break-word;
+			resize: none;
+			width: -webkit-fill-available;
+
+			&:focus {
+				border: 2px solid $brainflix-blue;
+			}
+
+			&:focus:required:invalid {
+				outline: none;
+				border: 2px solid #d22d2d;
+			}
+
+			@include tablet {
+				@include body-copy;
+				@include form-field-responsive;
+			}
+
+			@include desktop {
+				@include body-copy;
+				@include form-field-responsive;
+				margin: 0;
+			}
+		}
 	}
 
 	&__title {
@@ -66,45 +104,15 @@
 	}
 
 	&__avatar {
-		border-radius: 50%;
-		width: 2.25rem;
-		height: 2.25rem;
-		object-fit: cover;
+		@include avatar;
 		margin-top: 1.5rem;
 
 		@include tablet {
-			margin-top: 2.5rem;
+			margin-top: 1.5rem;
 		}
 
 		@include desktop {
-			margin: 2.5rem 1rem 0 0;
-		}
-	}
-
-	&__input-field {
-		@include mobile-copy;
-		font-family: "Avenir Regular";
-		height: 4rem;
-		border: 1px solid $brainflix-mercury;
-		background-color: $brainflix-alabaster;
-		padding: 0.5rem 1rem 1rem 0.5rem;
-		border-radius: 4px;
-		overflow-wrap: break-word;
-		resize: none;
-		width: -webkit-fill-available;
-
-		@include tablet {
-			height: 1rem;
-			margin-top: 0.5rem;
-			line-height: normal;
-			padding: 0.7rem;
-		}
-
-		@include desktop {
-			height: 1rem;
-			margin-top: 0.5rem;
-			line-height: normal;
-			padding: 0.7rem;
+			margin: 1.5rem 1rem 0 1rem;
 		}
 	}
 
@@ -113,25 +121,29 @@
 	}
 
 	&__button {
+		@include mobile-button;
+		@include button;
 		margin-top: 0.5rem;
-		background-color: $brainflix-blue;
-		border: none;
-		color: $white;
-		min-width: 9.375rem;
-		height: 2.5rem;
-		border-radius: 4px;
-		font-family: "Avenir Demi";
-		position: relative;
-		width: -webkit-fill-available;
+
+		&:hover {
+			background-color: $brainflix-darkblue;
+			cursor: pointer;
+		}
 
 		@include tablet {
-			width: 9.375rem;
+			@include labels-buttons;
+			width: auto;
+			margin-top: 0;
+		}
+
+		@include desktop {
+			@include labels-buttons;
+			width: auto;
+			margin-top: 0;
 		}
 
 		&--icon {
-			position: absolute;
-			left: 0.625rem;
-			bottom: 0.5rem;
+			@include icon-position;
 			width: 1.2rem;
 		}
 	}

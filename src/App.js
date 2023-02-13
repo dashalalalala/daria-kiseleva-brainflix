@@ -2,12 +2,12 @@ import "./App.scss";
 import Header from "./components/Header/Header";
 import VideoList from "./components/VideoList/VideoList";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
+import VideoDescription from "./components/VideoDescription/VideoDescription";
 import CommentForm from "./components/CommentForm/CommentForm";
 import CommentsList from "./components/CommentsList/CommentsList";
 import videoDetails from "./data/video-details.json";
 import videos from "./data/videos.json";
 import { useState } from "react";
-import VideoDescription from "./components/VideoDescription/VideoDescription";
 
 function App() {
 	const [mainVideo, setMainVideo] = useState(videoDetails[0]);

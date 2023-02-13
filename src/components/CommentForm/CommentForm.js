@@ -6,7 +6,7 @@ function CommentForm(props) {
 	return (
 		<div className="comment-form">
 			<p className="comment-form__comments-count">
-				{props.comments.length} comments
+				{props.comments.length} Comments
 			</p>
 			<div className="form">
 				<div>
@@ -16,9 +16,10 @@ function CommentForm(props) {
 					<p className="form__title">JOIN THE CONVERSATION</p>
 					<div className="form__input">
 						<textarea
-							className="form__input-field"
+							className={"form__input--field"}
 							id="input"
 							placeholder="Add a new comment"
+							minLength={5}
 							required
 						></textarea>
 						<button className="form__button">

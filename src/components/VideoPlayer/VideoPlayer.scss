@@ -6,6 +6,8 @@
 	justify-content: center;
 	border-bottom: 1px solid $brainflix-mercury;
 	background-color: $brainflix-darkblack;
+	margin: auto;
+	align-items: center;
 
 	@include tablet {
 		margin: auto;
@@ -18,99 +20,16 @@
 
 	&__poster {
 		width: -webkit-fill-available;
-		object-fit: contain;
-		aspect-ratio: 16/9;
+		object-fit: cover;
+		height: 56vw;
 
 		@include tablet {
-			object-fit: contain;
 			width: calc(100% - 5.5rem);
-			aspect-ratio: 16/9;
 		}
 
 		@include desktop {
-			object-fit: contain;
 			max-width: 70%;
-			aspect-ratio: 16/9;
+			height: 40vw;
 		}
-	}
-
-	&__title {
-		@include mobile-header;
-		font-family: "Avenir Demi";
-		text-align: left;
-
-		@include tablet {
-			@include page-header;
-			font-family: "Avenir Bold";
-			margin-bottom: 0.5rem;
-		}
-	}
-}
-
-.details {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-
-	@include tablet {
-		flex-direction: row;
-		gap: 1rem;
-	}
-
-	&__channel {
-		@include mobile-copy;
-		margin-bottom: 0;
-		font-family: "Avenir Demi";
-		text-align: left;
-	}
-
-	&__date {
-		@include mobile-copy;
-		margin-bottom: 0;
-		text-align: left;
-		color: $silver;
-	}
-}
-
-.info {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	gap: 2rem;
-	border-bottom: 1px solid $brainflix-mercury;
-	padding: 0 0 1rem 0;
-
-	@include tablet {
-		justify-content: space-between;
-	}
-}
-
-.stats {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-
-	@include tablet {
-		flex-direction: row;
-		justify-content: space-around;
-		gap: 1rem;
-	}
-
-	&__views,
-	&__likes {
-		@include mobile-copy;
-		margin-bottom: 0;
-		color: $silver;
-	}
-
-	&__icon {
-		padding: 0.5rem 0.5rem 0 0.5rem;
-	}
-}
-
-.description {
-	&__text {
-		@include mobile-copy;
-		text-align: left;
 	}
 }

@@ -12,6 +12,54 @@
 	}
 }
 
+//Button Mixin
+@mixin button {
+	background-color: $brainflix-blue;
+	border: none;
+	color: $white;
+	min-width: 9.375rem;
+	height: 2.5rem;
+	border-radius: 4px;
+	font-family: "Avenir Demi";
+	position: relative;
+	width: -webkit-fill-available;
+}
+
+//Mixin Form Field
+@mixin form-field {
+	width: -webkit-fill-available;
+	font-family: "Avenir Regular";
+	border: 1px solid $brainflix-mercury;
+	border-radius: 4px;
+	background-color: $brainflix-alabaster;
+	color: $brainflix-black;
+	padding-left: 2rem;
+	margin-right: 1rem;
+}
+
+//Mixin Avatar
+@mixin avatar {
+	border-radius: 50%;
+	width: 2.25rem;
+	height: 2.25rem;
+	object-fit: cover;
+}
+
+//Mixin Icon
+@mixin icon-position {
+	position: absolute;
+	left: 0.625rem;
+	bottom: 0.6rem;
+}
+
+//Mixin Form Field Tablet & Desktop
+@mixin form-field-responsive {
+	height: 1rem;
+	margin-top: 0rem;
+	line-height: normal;
+	padding: 0.7rem;
+}
+
 //Font Mixins (Desktop & Tablet)
 @mixin page-header {
 	font-size: 2.0625rem;
@@ -38,7 +86,7 @@
 	line-height: 1.25rem;
 }
 
-//Font Mixins (Mobile) 
+//Font Mixins (Mobile)
 @mixin mobile-header {
 	font-size: 1.5rem;
 	line-height: 2rem;

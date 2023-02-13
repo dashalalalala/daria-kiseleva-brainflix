@@ -1,7 +1,12 @@
 import "./Comments.scss";
-import Moment from "react-moment";
+import TimeAgo from "react-timeago";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 
 function Comments(props) {
+	const unit = "years";
+	const suffix = "ago";
+	const formatter = buildFormatter(unit, suffix);
+
 	return (
 		<div className="comments">
 			<div className="comments__avatar">
@@ -11,7 +16,10 @@ function Comments(props) {
 				<div className="comment__info">
 					<p className="comment__info--name">{props.name}</p>
 					<p className="comment__info--date">
-						<Moment format="MM/DD/YYYY">{props.date}</Moment>
+						<TimeAgo
+							date={props.date}
+							formatter={(formatter.value, formatter.unit)}
+						/>
 					</p>
 				</div>
 				<div className="comment__text">
