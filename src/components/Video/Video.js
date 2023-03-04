@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import "./Video.scss";
+import { Link, useParams } from "react-router-dom";
 
-function Video(props) {
-	const clickHandler = () => {
-		props.mainVideoProp(props.id);
-	};
+function Video({ id, title, image, channel, changeActiveVideo }) {
+	const { videoId } = useParams();
+	const [overflow, setOverflow] = useState(title);
 
-	const [overflow, setOverflow] = useState(props.title);
+	useEffect(() => {
+		changeActiveVideo(videoId);
+	}, [videoId, changeActiveVideo]);
 
 	useEffect(() => {
 		function resizeHandler() {
 			if (window.innerWidth <= 415) {
-				const words = props.title.split(" ");
+				const words = title.split(" ");
 				let overflowText = "";
 				for (let i = 0; i < words.length; i++) {
 					if (overflowText.length + words[i].length <= 40) {
@@ -23,24 +25,26 @@ function Video(props) {
 				}
 				setOverflow(overflowText.trim());
 			} else if (window.innerWidth >= 416) {
-				setOverflow(props.title);
+				setOverflow(title);
 			}
 		}
 
 		window.addEventListener("resize", resizeHandler);
 		return () => window.removeEventListener("resize", resizeHandler);
-	}, [props.title]);
+	}, [title]);
 
 	return (
-		<div className="video" id={props.id} onClick={clickHandler}>
-			<div>
-				<video className="video__thumbnail" poster={props.image}></video>
+		<Link to={`/videos/${id}`} style={{ textDecoration: "none" }}>
+			<div className="video" id={id}>
+				<div>
+					<video className="video__thumbnail" poster={image}></video>
+				</div>
+				<div className="video__details">
+					<h3 className="video__title">{overflow}</h3>
+					<p className="video__channel">{channel}</p>
+				</div>
 			</div>
-			<div className="video__details">
-				<h3 className="video__title">{overflow}</h3>
-				<p className="video__channel">{props.channel}</p>
-			</div>
-		</div>
+		</Link>
 	);
 }
 

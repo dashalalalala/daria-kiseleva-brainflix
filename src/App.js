@@ -1,47 +1,22 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
-import VideoList from "./components/VideoList/VideoList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Main from "./components/Main/Main";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
-import VideoDescription from "./components/VideoDescription/VideoDescription";
-import CommentForm from "./components/CommentForm/CommentForm";
-import CommentsList from "./components/CommentsList/CommentsList";
-import videoDetails from "./data/video-details.json";
-import videos from "./data/videos.json";
-import { useState } from "react";
+import VideoUpload from "./components/VideoUpload/VideoUpload";
 
 function App() {
-	const [mainVideo, setMainVideo] = useState(videoDetails[0]);
-	const [comments, setComments] = useState(videoDetails[0].comments);
-	const [filteredVideos, setFilter] = useState(videos);
-
-	const changeActiveVideo = (id) => {
-		const selectedVideo = videoDetails.find((video) => video.id === id);
-		setMainVideo(selectedVideo);
-		setComments(selectedVideo.comments);
-		showFilteredVideos(id);
-	};
-
-	const showFilteredVideos = (id) => {
-		const newVideoArray = videos.filter((video) => video.id !== id);
-		setFilter(newVideoArray);
-	};
-
 	return (
 		<div className="App">
-			<Header />
-			<VideoPlayer videos={mainVideo} />
-			<div className="main-div">
-				<div className="video-player">
-					<VideoDescription videos={mainVideo} />
-					<CommentForm comments={comments} />
-					<CommentsList comments={comments} />
-				</div>
-				<VideoList
-					videos={filteredVideos}
-					mainVideoProp={changeActiveVideo}
-					activeVideoId={mainVideo.id}
-				/>
-			</div>
+			<BrowserRouter>
+				<Header />
+				<Routes>
+					<Route path="/" element={<Main />} />
+					<Route path="/videos" element={<Main />} />
+					<Route path="/videos/:videoId" element={<Main />} />
+					<Route path="/upload" element={<VideoUpload />} />
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }

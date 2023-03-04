@@ -1,26 +1,28 @@
 import Video from "../Video/Video";
 import "./VideoList.scss";
+import { useParams } from "react-router-dom";
 
-function VideoList(props) {
+function VideoList({ changeActiveVideo, videos, activeVideoId }) {
 	return (
 		<div className="video-list">
 			<h2 className="video-list__header">NEXT VIDEOS</h2>
-			{props.videos
-				.filter((video) => {
-					return video.id !== props.activeVideoId;
-				})
-				.map((video) => (
-					<Video
-						key={video.id}
-						id={video.id}
-						title={video.title}
-						image={video.image}
-						video={video.video}
-						channel={video.channel}
-						comments={video.comments}
-						mainVideoProp={props.mainVideoProp}
-					/>
-				))}
+			{videos &&
+				videos
+					.filter((video) => {
+						return video.id !== activeVideoId;
+					})
+					.map((video, index) => (
+						<Video
+							key={video.id}
+							id={video.id}
+							title={video.title}
+							image={video.image}
+							channel={video.channel}
+							// videos = {props.videos}
+							// mainVideoProp={props.mainVideoProp}
+							changeActiveVideo={changeActiveVideo}
+						/>
+					))}
 		</div>
 	);
 }

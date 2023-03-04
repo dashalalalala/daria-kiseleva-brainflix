@@ -1,0 +1,194 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/_mixins";
+
+p {
+	margin-bottom: 0;
+
+	@include tablet {
+		margin-bottom: 0.3rem;
+	}
+}
+
+.divider {
+	@include tablet {
+		border-top: 1px solid #e1e1e1;
+	}
+
+	@include desktop {
+		border-top: 1px solid #e1e1e1;
+	}
+}
+
+.buttons {
+	@include tablet {
+		border-top: 1px solid #e1e1e1;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: baseline;
+	}
+
+	@include desktop {
+		border-top: 1px solid #e1e1e1;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: baseline;
+	}
+}
+
+.upload__details {
+	@include desktop {
+		display: flex;
+		flex-direction: row;
+		gap: 1.5rem;
+		margin-bottom: 1rem;
+	}
+}
+
+.thumbnail-section {
+	@include desktop {
+		display: flex;
+		flex-direction: column;
+		width: 18rem;
+	}
+}
+
+.form-section {
+	@include desktop {
+		display: flex;
+		flex-direction: column;
+		width: -webkit-fill-available;
+	}
+}
+
+.upload {
+	padding: 1rem;
+	border-top: 1px solid #e1e1e1;
+
+	@include tablet {
+		width: calc(100% - 5.5rem);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: auto;
+		border-top: none;
+	}
+
+	@include desktop {
+		width: calc(100% - 15.5rem);
+		margin: auto;
+		border-top: none;
+	}
+
+	&__header {
+		@include mobile-header;
+		font-family: "Avenir Demi";
+		color: $brainflix-black;
+		margin-top: 0;
+
+		@include tablet {
+			@include page-header;
+			font-family: "Avenir Bold";
+			padding: 1rem 0 2rem 0;
+			border-bottom: 1px solid #e1e1e1;
+		}
+
+		@include desktop {
+			@include page-header;
+			font-family: "Avenir Bold";
+			padding: 1rem 0 2rem 0;
+			border-bottom: 1px solid #e1e1e1;
+      margin-bottom: 1rem;
+		}
+	}
+
+	&__subheader {
+		@include mobile-subheader;
+		font-family: "Avenir Demi";
+		color: $silver;
+
+		@include tablet {
+			@include subheader;
+		}
+	}
+
+	&__thumbnail {
+		width: -webkit-fill-available;
+		height: auto;
+		object-fit: cover;
+		border-radius: 4px;
+
+		@include tablet {
+			width: 50%;
+		}
+	}
+
+	&__input--title {
+		@include mobile-copy;
+		font-family: "Avenir Regular";
+		height: 1rem;
+		border: 1px solid $brainflix-mercury;
+		background-color: $brainflix-alabaster;
+		padding: 0.5rem 1rem 0.5rem 0.5rem;
+		border-radius: 4px;
+		overflow-wrap: break-word;
+		resize: none;
+		width: -webkit-fill-available;
+	}
+
+	&__input--description {
+		@include mobile-copy;
+		font-family: "Avenir Regular";
+		height: 4rem;
+		border: 1px solid $brainflix-mercury;
+		background-color: $brainflix-alabaster;
+		padding: 0.5rem 1rem 1rem 0.5rem;
+		border-radius: 4px;
+		overflow-wrap: break-word;
+		resize: none;
+		width: -webkit-fill-available;
+
+		@include tablet {
+			margin-bottom: 1rem;
+		}
+	}
+
+	& ::placeholder {
+		color: $brainflix-darkblack;
+	}
+}
+
+.upload__button--publish {
+	@include mobile-button;
+	@include button;
+	margin: 1rem 0;
+
+	@include tablet {
+		@include labels-buttons;
+	}
+
+	@include desktop {
+		@include labels-buttons;
+	}
+
+	&:hover {
+		background-color: $brainflix-darkblue;
+		cursor: pointer;
+	}
+}
+
+.upload__button--cancel {
+	@include mobile-button;
+	@include button;
+	background-color: white;
+	color: $brainflix-blue;
+
+	@include tablet {
+		@include labels-buttons;
+	}
+
+	@include desktop {
+		@include labels-buttons;
+	}
+}

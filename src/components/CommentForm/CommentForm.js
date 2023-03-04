@@ -5,9 +5,7 @@ import commentIcon from "../../assets/images/icons/add_comment.svg";
 function CommentForm(props) {
 	return (
 		<div className="comment-form">
-			<p className="comment-form__comments-count">
-				{props.comments.length} Comments
-			</p>
+			<p className="comment-form__comments-count">{props.length} Comments</p>
 			<div className="form">
 				<div>
 					<img className="form__avatar" src={avatar} alt="male profile"></img>
@@ -16,7 +14,7 @@ function CommentForm(props) {
 					<p className="form__title">JOIN THE CONVERSATION</p>
 					<div className="form__input">
 						<textarea
-							className={"form__input--field"}
+							className="form__input--field"
 							id="input"
 							placeholder="Add a new comment"
 							minLength={5}

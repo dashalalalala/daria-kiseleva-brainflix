@@ -7,18 +7,3 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
-.main-div {
-	@include desktop {
-		display: flex;
-		flex-direction: row;
-		width: calc(100% - 15.5rem);
-		margin: auto;
-	}
-}
-
-.video-player {
-	@include desktop {
-		max-width: 64%;
-	}
-}

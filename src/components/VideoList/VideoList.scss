@@ -14,8 +14,9 @@
 	}
 
 	@include desktop {
-		padding: 2.5rem 1rem;
-		border-left: solid 1px $brainflix-mercury;
+		padding: 2.5rem 2rem 2.5rem 1rem;
+		border-left: solid 1px #e1e1e1;
+		width: 73rem;
 	}
 
 	&__header {
