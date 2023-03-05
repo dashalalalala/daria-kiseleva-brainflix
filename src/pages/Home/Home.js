@@ -1,16 +1,14 @@
-import "./Main.scss";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import VideoDescription from "../VideoDescription/VideoDescription";
-import CommentForm from "../CommentForm/CommentForm";
-import CommentsList from "../CommentsList/CommentsList";
-import VideoList from "../VideoList/VideoList";
+import "./Home.scss";
+import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
+import VideoDescription from "../../components/VideoDescription/VideoDescription";
+import VideoList from "../../components/VideoList/VideoList";
+import CommentSection from "../../components/CommentSection/CommentSection";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import { apiKey, apiUrl } from "../../utils";
 
-//API
-const apiKey = "01dc537b-ea56-461e-a1aa-6e5b676f6493";
-const apiUrl = "https://project-2-api.herokuapp.com/videos";
-
+//Video Initial State Props
 const initialState = {
 	title: "",
 	channel: "",
@@ -21,6 +19,7 @@ const initialState = {
 	comments: [],
 };
 
+//Getting the URL for the load
 const getUrl = (videoId, videos) => {
 	if (videoId) {
 		return `${apiUrl}/${videoId}?api_key=${apiKey}`;
@@ -29,26 +28,32 @@ const getUrl = (videoId, videos) => {
 	if (videos.length) {
 		return `${apiUrl}/${videos[0].id}?api_key=${apiKey}`;
 	}
-
-	return null;
 };
 
 function Main() {
+	const navigate = useNavigate();
+	const { id } = useParams();
 	const [videos, setVideos] = useState([]);
 	const [mainVideo, setMainVideo] = useState({});
-	const [videoId, setVideoId] = useState(null);
 	const [videoProps, setVideoProps] = useState(initialState);
 
+	//Videos Get Request
 	useEffect(() => {
 		axios
 			.get(`${apiUrl}/?api_key=${apiKey}`)
-			.then((response) => setVideos(response.data));
-		// .catch(error) => console.log(error);
+			.then((response) => setVideos(response.data))
+			.catch((error) => {
+				console.error(error);
+			});
 	}, []);
 
+	//Default Video Setup
 	useEffect(() => {
 		if (videos.length) {
-			const url = getUrl(videoId, videos);
+			if (!id) {
+				navigate(`/videos/${videos[0].id}`);
+			}
+			const url = getUrl(id, videos);
 
 			axios.get(url).then((defaultVideo) => {
 				setMainVideo(defaultVideo.data);
@@ -63,31 +68,18 @@ function Main() {
 				});
 			});
 		}
-	}, [videos, videoId]);
-
-	const changeActiveVideo = (id) => {
-		setVideoId(id);
-		const selectedVideo = videos.find((video) => video.id === id);
-		if (selectedVideo) {
-			setMainVideo(selectedVideo);
-		}
-	};
+	}, [videos, id, navigate]);
 
 	if (mainVideo) {
 		return (
 			<>
 				<VideoPlayer mainVideo={mainVideo} />
 				<div className="main-div">
-					<div className="video=player">
+					<div className="video-player">
 						<VideoDescription mainVideo={videoProps} />
-						<CommentForm comments={videoProps.comments} />
-						<CommentsList comments={videoProps.comments} />
+						<CommentSection comments={videoProps.comments} id={id} />
 					</div>
-					<VideoList
-						videos={videos}
-						changeActiveVideo={changeActiveVideo}
-						activeVideoId={mainVideo.id}
-					/>
+					<VideoList videos={videos} activeVideoId={mainVideo.id} />
 				</div>
 			</>
 		);

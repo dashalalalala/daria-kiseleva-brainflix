@@ -1,24 +1,35 @@
 import "./VideoUpload.scss";
+import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 import thumbnail from "../../assets/images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/images/icons/publish.svg";
-import { useNavigate } from "react-router-dom";
 
 function VideoUpload() {
 	const navigate = useNavigate();
-	
+	const inputRef = useRef(null);
+	const nameRef = useRef(null);
+
 	//Successful Upload
-	function handlePublish() {
+	const handlePublish = (e) => {
+		e.preventDefault();
+
+		if (nameRef.current.value.length <= 0) {
+			alert("You must provide a title");
+			return false;
+		}
+		if (inputRef.current.value.length < 15) {
+			alert("Your description must be 15 minimum characters");
+			return false;
+		}
 		alert("Thank you for your submission!");
 		navigate("/");
-		console.log("click");
-	}
+	};
 
 	//Cancel Upload
-		function handleCancel() {
-			alert("Submission has been cancelled");
-			navigate("/");
-			console.log("click");
-		}
+	function handleCancel() {
+		alert("Submission has been cancelled");
+		navigate("/");
+	}
 
 	return (
 		<>
@@ -28,7 +39,11 @@ function VideoUpload() {
 				<div className="upload__details">
 					<div className="thumbnail-section">
 						<p className="upload__subheader">VIDEO THUMBNAIL</p>
-						<img className="upload__thumbnail" src={thumbnail}></img>
+						<img
+							className="upload__thumbnail"
+							src={thumbnail}
+							alt="thumbnail"
+						></img>
 					</div>
 					<div className="form-section">
 						<div>
@@ -37,7 +52,7 @@ function VideoUpload() {
 								className="upload__input--title"
 								type="text"
 								placeholder="Add a title to your video"
-								required
+								ref={nameRef}
 							></input>
 						</div>
 						<div>
@@ -45,8 +60,7 @@ function VideoUpload() {
 							<textarea
 								className="upload__input--description"
 								placeholder="Add a description to your video"
-								minLength={15}
-								required
+								ref={inputRef}
 							></textarea>
 						</div>
 					</div>
@@ -63,7 +77,9 @@ function VideoUpload() {
 						</button>
 					</div>
 					<div>
-						<button className="upload__button--cancel" onClick={handleCancel}>CANCEL</button>
+						<button className="upload__button--cancel" onClick={handleCancel}>
+							CANCEL
+						</button>
 					</div>
 				</div>
 			</form>

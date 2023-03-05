@@ -1,7 +1,6 @@
 import "./VideoPlayer.scss";
 
-function VideoPlayer({mainVideo}) {
-
+function VideoPlayer({ mainVideo }) {
 	return (
 		<div className="player">
 			{mainVideo && (

@@ -56,6 +56,10 @@
 		}
 
 		&__text {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+
 			&--comment {
 				@include mobile-copy;
 				margin: 0.5rem 0 0.8125rem 0;
@@ -70,5 +74,23 @@
 				}
 			}
 		}
+	}
+}
+
+.delete-button {
+	border: none;
+	background: none;
+	height: 1.4rem;
+	:hover {
+		filter: invert(18%) sepia(66%) saturate(4433%) hue-rotate(192deg)
+			brightness(95%) contrast(100%);
+		cursor: pointer;
+	}
+
+	&__image {
+		-o-object-fit: contain;
+		object-fit: contain;
+		width: 2rem;
+		height: 0.8rem;
 	}
 }

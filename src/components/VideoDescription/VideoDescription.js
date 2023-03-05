@@ -3,9 +3,7 @@ import Moment from "react-moment";
 import viewsIcon from "../../assets/images/icons/views.svg";
 import likesIcon from "../../assets/images/icons/likes.svg";
 
-function VideoDescription({mainVideo}) {
-	// console.log("props description", mainVideo)
-
+function VideoDescription({ mainVideo }) {
 	return (
 		<div className="main">
 			<div className="title">

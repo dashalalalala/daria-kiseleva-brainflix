@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Video.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Video({ id, title, image, channel, changeActiveVideo }) {
-	const { videoId } = useParams();
+function Video({ id, title, image, channel }) {
 	const [overflow, setOverflow] = useState(title);
-
-	useEffect(() => {
-		changeActiveVideo(videoId);
-	}, [videoId, changeActiveVideo]);
 
 	useEffect(() => {
 		function resizeHandler() {

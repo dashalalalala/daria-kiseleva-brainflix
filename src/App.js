@@ -1,9 +1,8 @@
 import "./App.scss";
-import Header from "./components/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Main from "./components/Main/Main";
-import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
-import VideoUpload from "./components/VideoUpload/VideoUpload";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home/Home";
+import VideoUpload from "./pages/VideoUpload/VideoUpload";
 
 function App() {
 	return (
@@ -11,9 +10,9 @@ function App() {
 			<BrowserRouter>
 				<Header />
 				<Routes>
-					<Route path="/" element={<Main />} />
-					<Route path="/videos" element={<Main />} />
-					<Route path="/videos/:videoId" element={<Main />} />
+					<Route path="/" element={<Home />} />
+					<Route path="/videos" element={<Home />} />
+					<Route path="/videos/:id" element={<Home />} />
 					<Route path="/upload" element={<VideoUpload />} />
 				</Routes>
 			</BrowserRouter>

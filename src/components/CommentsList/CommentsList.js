@@ -1,17 +1,20 @@
 import Comments from "../Comments/Comments";
 import "./CommentsList.scss";
 
-function CommentsList({comments}) {
+function CommentsList({ newComments, deleteComment }) {
 	return (
 		<div className="comments-list">
-			{comments && comments.map((comment) => (
-				<Comments
-					key={comment.id}
-					date={comment.timestamp}
-					name={comment.name}
-					comment={comment.comment}
-				/>
-			))}
+			{newComments &&
+				newComments.map((comment) => (
+					<Comments
+						key={comment.id}
+						id={comment.id}
+						date={comment.timestamp}
+						name={comment.name}
+						comment={comment.comment}
+						deleteComment={deleteComment}
+					/>
+				))}
 		</div>
 	);
 }

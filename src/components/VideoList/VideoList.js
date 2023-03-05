@@ -1,8 +1,7 @@
 import Video from "../Video/Video";
 import "./VideoList.scss";
-import { useParams } from "react-router-dom";
 
-function VideoList({ changeActiveVideo, videos, activeVideoId }) {
+function VideoList({ videos, activeVideoId }) {
 	return (
 		<div className="video-list">
 			<h2 className="video-list__header">NEXT VIDEOS</h2>
@@ -18,9 +17,6 @@ function VideoList({ changeActiveVideo, videos, activeVideoId }) {
 							title={video.title}
 							image={video.image}
 							channel={video.channel}
-							// videos = {props.videos}
-							// mainVideoProp={props.mainVideoProp}
-							changeActiveVideo={changeActiveVideo}
 						/>
 					))}
 		</div>
