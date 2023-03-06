@@ -5,7 +5,7 @@ import axios from "axios";
 import { apiKey, apiUrl } from "../../utils";
 
 function CommentSection({ id }) {
-	const [name, setName] = useState("New User");
+	const [name, setName] = useState("");
 	const [comment, setComment] = useState("");
 	const [newComments, setNewComments] = useState([]);
 
@@ -36,7 +36,7 @@ function CommentSection({ id }) {
 	const addNewComment = (name, comment) => {
 		axios
 			.post(`${apiUrl}/${id}/comments?api_key=${apiKey}`, {
-				name: name,
+				name: "New User",
 				comment: comment,
 			})
 			.then((response) => {
@@ -51,7 +51,7 @@ function CommentSection({ id }) {
 			.catch((error) => {
 				console.error(error);
 			});
-		setName("New User");
+		setName("");
 		setComment("");
 	};
 
