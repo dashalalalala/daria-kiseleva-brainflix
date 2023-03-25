@@ -6,7 +6,7 @@ import CommentSection from "../../components/CommentSection/CommentSection";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { apiKey, apiUrl } from "../../utils";
+import { apiUrl } from "../../utils";
 
 //Video Initial State Props
 const initialState = {
@@ -22,11 +22,11 @@ const initialState = {
 //Getting the URL for the load
 const getUrl = (videoId, videos) => {
 	if (videoId) {
-		return `${apiUrl}/${videoId}?api_key=${apiKey}`;
+		return `${apiUrl}/${videoId}`;
 	}
 
-	if (videos.length) {
-		return `${apiUrl}/${videos[0].id}?api_key=${apiKey}`;
+	if (!videoId) {
+		return `${apiUrl}/${videos[0].id}`;
 	}
 };
 
@@ -37,38 +37,34 @@ function Main() {
 	const [mainVideo, setMainVideo] = useState({});
 	const [videoProps, setVideoProps] = useState(initialState);
 
-	//Videos Get Request
+	//Default Video Setup
 	useEffect(() => {
 		axios
-			.get(`${apiUrl}/?api_key=${apiKey}`)
-			.then((response) => setVideos(response.data))
+			.get(`${apiUrl}`)
+			.then((response) => {
+				setVideos(response.data);
+				if (!id) {
+					navigate(`/videos/${response.data[0].id}`);
+				} else {
+					const url = getUrl(id);
+					axios.get(url).then((defaultVideo) => {
+						setMainVideo(defaultVideo.data);
+						setVideoProps({
+							title: defaultVideo.data.title,
+							channel: defaultVideo.data.channel,
+							timestamp: defaultVideo.data.timestamp,
+							views: defaultVideo.data.views,
+							likes: defaultVideo.data.likes,
+							description: defaultVideo.data.description,
+							comments: defaultVideo.data.comments,
+						});
+					});
+				}
+			})
 			.catch((error) => {
 				console.error(error);
 			});
-	}, []);
-
-	//Default Video Setup
-	useEffect(() => {
-		if (videos.length) {
-			if (!id) {
-				navigate(`/videos/${videos[0].id}`);
-			}
-			const url = getUrl(id, videos);
-
-			axios.get(url).then((defaultVideo) => {
-				setMainVideo(defaultVideo.data);
-				setVideoProps({
-					title: defaultVideo.data.title,
-					channel: defaultVideo.data.channel,
-					timestamp: defaultVideo.data.timestamp,
-					views: defaultVideo.data.views,
-					likes: defaultVideo.data.likes,
-					description: defaultVideo.data.description,
-					comments: defaultVideo.data.comments,
-				});
-			});
-		}
-	}, [videos, id, navigate]);
+	}, [id, navigate]);
 
 	if (mainVideo) {
 		return (

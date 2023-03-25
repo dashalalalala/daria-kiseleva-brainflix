@@ -2,9 +2,9 @@ import CommentForm from "../CommentForm/CommentForm";
 import CommentsList from "../CommentsList/CommentsList";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { apiKey, apiUrl } from "../../utils";
+import { apiUrl } from "../../utils";
 
-function CommentSection({ id }) {
+function CommentSection({ id, comments }) {
 	const [name, setName] = useState("");
 	const [comment, setComment] = useState("");
 	const [newComments, setNewComments] = useState([]);
@@ -13,7 +13,7 @@ function CommentSection({ id }) {
 	useEffect(() => {
 		if (id) {
 			axios
-				.get(`${apiUrl}/${id}?api_key=${apiKey}`)
+				.get(`${apiUrl}/${id}`)
 				.then((response) => {
 					const sortedComments = response.data.comments.sort(
 						(a, b) => new Date(b.timestamp) - new Date(a.timestamp)
@@ -33,11 +33,12 @@ function CommentSection({ id }) {
 	};
 
 	//Post Request for Comments
-	const addNewComment = (name, comment) => {
+	const addNewComment = (name, comment, timestamp) => {
 		axios
-			.post(`${apiUrl}/${id}/comments?api_key=${apiKey}`, {
+			.post(`${apiUrl}/${id}/comments`, {
 				name: "New User",
 				comment: comment,
+				timestamp: timestamp,
 			})
 			.then((response) => {
 				const newComment = response.data;
@@ -58,7 +59,7 @@ function CommentSection({ id }) {
 	//Delete Request for Comments
 	const deleteComment = (commentId) => {
 		axios
-			.delete(`${apiUrl}/${id}/comments/${commentId}?api_key=${apiKey}`)
+			.delete(`${apiUrl}/${id}/comments/${commentId}`)
 			.then(() => {
 				setNewComments(
 					newComments.filter((comment) => comment.id !== commentId)
@@ -79,7 +80,7 @@ function CommentSection({ id }) {
 				newComments={newComments}
 				handleSubmit={handleSubmit}
 			/>
-			<CommentsList newComments={newComments} deleteComment={deleteComment} />
+			<CommentsList newComments={newComments} deleteComment={deleteComment}/>
 		</>
 	);
 }

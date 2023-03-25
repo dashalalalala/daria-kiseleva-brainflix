@@ -1,27 +1,45 @@
 import "./VideoUpload.scss";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useState } from "react";
 import thumbnail from "../../assets/images/Upload-video-preview.jpg";
 import uploadIcon from "../../assets/images/icons/publish.svg";
+import axios from "axios";
+import { apiUrl } from "../../utils";
 
 function VideoUpload() {
 	const navigate = useNavigate();
-	const inputRef = useRef(null);
-	const nameRef = useRef(null);
 
-	//Successful Upload
+	const [formData, setFormData] = useState({
+		title: "",
+		description: "",
+	});
+
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+		console.log(formData);
+		setFormData({ ...formData, [name]: value });
+	};
+
+	//Successful Upload & POST Request
 	const handlePublish = (e) => {
 		e.preventDefault();
-
-		if (nameRef.current.value.length <= 0) {
+		if (formData.title.length <= 0) {
 			alert("You must provide a title");
 			return false;
 		}
-		if (inputRef.current.value.length < 15) {
+		if (formData.description.length < 15) {
 			alert("Your description must be 15 minimum characters");
 			return false;
 		}
 		alert("Thank you for your submission!");
+		axios
+			.post(apiUrl, formData)
+			.then((response) => {
+				console.log("response data", response.data);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
 		navigate("/");
 	};
 
@@ -34,7 +52,7 @@ function VideoUpload() {
 	return (
 		<>
 			<div className="divider"></div>
-			<form className="upload">
+			<form className="upload" onSubmit={handlePublish}>
 				<h2 className="upload__header">Upload Video</h2>
 				<div className="upload__details">
 					<div className="thumbnail-section">
@@ -51,23 +69,30 @@ function VideoUpload() {
 							<input
 								className="upload__input--title"
 								type="text"
+								name="title"
 								placeholder="Add a title to your video"
-								ref={nameRef}
+								value={formData.title}
+								onChange={handleInputChange}
 							></input>
 						</div>
 						<div>
 							<p className="upload__subheader">ADD A VIDEO DESCRIPTION</p>
 							<textarea
 								className="upload__input--description"
+								name="description"
 								placeholder="Add a description to your video"
-								ref={inputRef}
+								value={formData.description}
+								onChange={handleInputChange}
 							></textarea>
 						</div>
 					</div>
 				</div>
 				<div className="buttons">
 					<div>
-						<button className="upload__button--publish" onClick={handlePublish}>
+						<button
+							className="upload__button--publish desktop"
+							onClick={handlePublish}
+						>
 							PUBLISH
 							<img
 								className="button__icon"
