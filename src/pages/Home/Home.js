@@ -49,6 +49,7 @@ function Main() {
 					const url = getUrl(id);
 					axios.get(url).then((defaultVideo) => {
 						setMainVideo(defaultVideo.data);
+						//can potentially get rid of it
 						setVideoProps({
 							title: defaultVideo.data.title,
 							channel: defaultVideo.data.channel,

@@ -7,11 +7,13 @@
 		flex-direction: row;
 		width: calc(100% - 15.5rem);
 		margin: auto;
+		justify-content: space-between;
 	}
 }
 
 .video-player {
 	@include desktop {
 		max-width: 67%;
+		width: -webkit-fill-available;
 	}
 }

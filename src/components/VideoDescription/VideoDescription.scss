@@ -156,6 +156,9 @@
 		@include mobile-copy;
 		text-align: left;
 		margin-bottom: 0;
+		overflow: visible;
+		word-wrap: break-word;
+		hyphens: auto;
 
 		@include tablet {
 			@include body-copy;

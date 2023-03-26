@@ -8,13 +8,11 @@
 	background-color: $brainflix-darkblack;
 	margin: auto;
 	align-items: center;
+	position: relative;
 
 	@include tablet {
 		margin: auto;
 		align-items: center;
-	}
-
-	@include tablet {
 		border-bottom: none;
 	}
 
@@ -32,4 +30,77 @@
 			height: 40vw;
 		}
 	}
+}
+
+.player__controls-container {
+	position: absolute;
+	color: white;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	opacity: 0;
+	transition: opacity 150ms ease-in-out;
+}
+
+.player:hover > .player__controls-container,
+.player:focus-within > .player__controls-container {
+	opacity: 1;
+}
+
+.player__controls-container .controls {
+	display: flex;
+	gap: 0.5rem;
+	padding: 1rem;
+	align-items: center;
+	justify-content: center;
+
+	@include tablet {
+		width: calc(100% - 7.5rem);
+		margin: auto;
+	}
+
+	@include desktop {
+		max-width: 68%;
+		margin: auto;
+	}
+}
+
+.player__controls-container .controls button {
+	background: rgba(0, 0, 5, 0.5);
+	border: none;
+	color: inherit;
+	padding: 4px 0 0 0;
+	height: 2.5rem;
+	width: 2.5rem;
+	cursor: pointer;
+	opacity: 0.85;
+	transition: opacity 150ms ease-in-out;
+}
+
+.player__controls-container .controls button:hover {
+	opacity: 1;
+}
+
+.controls__right {
+	display: flex;
+}
+
+.duration-container {
+	@include body-copy;
+	background: rgba(0, 0, 5, 0.5);
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	flex-grow: 1;
+	justify-content: flex-start;
+	padding: 0.64rem 1rem;
+}
+
+.duration__line {
+	display: block;
+	flex: 1;
+	height: 4px;
+	margin-right: 1rem;
+	background-color: black;
 }

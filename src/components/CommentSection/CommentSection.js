@@ -80,7 +80,7 @@ function CommentSection({ id, comments }) {
 				newComments={newComments}
 				handleSubmit={handleSubmit}
 			/>
-			<CommentsList newComments={newComments} deleteComment={deleteComment}/>
+			<CommentsList newComments={newComments} deleteComment={deleteComment} />
 		</>
 	);
 }
