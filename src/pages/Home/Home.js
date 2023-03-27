@@ -8,17 +8,6 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiUrl } from "../../utils";
 
-//Video Initial State Props
-const initialState = {
-	title: "",
-	channel: "",
-	timestamp: 0,
-	views: 0,
-	likes: 0,
-	description: "",
-	comments: [],
-};
-
 //Getting the URL for the load
 const getUrl = (videoId, videos) => {
 	if (videoId) {
@@ -35,7 +24,6 @@ function Main() {
 	const { id } = useParams();
 	const [videos, setVideos] = useState([]);
 	const [mainVideo, setMainVideo] = useState({});
-	const [videoProps, setVideoProps] = useState(initialState);
 
 	//Default Video Setup
 	useEffect(() => {
@@ -49,16 +37,6 @@ function Main() {
 					const url = getUrl(id);
 					axios.get(url).then((defaultVideo) => {
 						setMainVideo(defaultVideo.data);
-						//can potentially get rid of it
-						setVideoProps({
-							title: defaultVideo.data.title,
-							channel: defaultVideo.data.channel,
-							timestamp: defaultVideo.data.timestamp,
-							views: defaultVideo.data.views,
-							likes: defaultVideo.data.likes,
-							description: defaultVideo.data.description,
-							comments: defaultVideo.data.comments,
-						});
 					});
 				}
 			})
@@ -73,8 +51,8 @@ function Main() {
 				<VideoPlayer mainVideo={mainVideo} />
 				<div className="main-div">
 					<div className="video-player">
-						<VideoDescription mainVideo={videoProps} />
-						<CommentSection comments={videoProps.comments} id={id} />
+						<VideoDescription mainVideo={mainVideo} />
+						<CommentSection comments={mainVideo.comments} id={id} />
 					</div>
 					<VideoList videos={videos} activeVideoId={mainVideo.id} />
 				</div>
