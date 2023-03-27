@@ -9,22 +9,15 @@ function CommentSection({ id, comments }) {
 	const [comment, setComment] = useState("");
 	const [newComments, setNewComments] = useState([]);
 
-	//Get Request for Comments Data
+	//Loading Comments Data
 	useEffect(() => {
-		if (id) {
-			axios
-				.get(`${apiUrl}/${id}`)
-				.then((response) => {
-					const sortedComments = response.data.comments.sort(
-						(a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-					);
-					setNewComments(sortedComments);
-				})
-				.catch((error) => {
-					console.error(error);
-				});
+		if (comments) {
+			const sortedComments = comments.sort(
+				(a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+			);
+			setNewComments(sortedComments);
 		}
-	}, [id]);
+	}, [comments]);
 
 	//Comment Submit Handler
 	const handleSubmit = (e) => {
